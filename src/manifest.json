@@ -1,6 +1,6 @@
 {
-  "name": "{{ name }}",
-  "description": "{{ description }}",
+  "name": "github-floating-dots",
+  "description": "Github plugin",
   "version": null,
   "manifest_version": 2,
   "icons": {
@@ -8,16 +8,16 @@
     "128": "icons/icon_128.png"
   },
   "browser_action": {
-    "default_title": "{{ name }}",
+    "default_title": "github-floating-dots",
     "default_popup": "popup/popup.html"
   },
   "background": {
     "scripts": [
       "background.js"
     ]
-  }{{#options}},
+  },
   "options_ui": {
     "page": "options/options.html",
     "chrome_style": true
-  }{{/options}}
+  }
 }
