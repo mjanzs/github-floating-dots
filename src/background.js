@@ -1,2 +1,10 @@
 global.browser = require('webextension-polyfill');
-alert('Hello world!');
+
+chrome.extension.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    chrome.pageAction.show(sender.tab.id);
+    sendResponse({
+      access_token: store.get('accessToken')
+    });
+  });
+
