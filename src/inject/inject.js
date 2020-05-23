@@ -1,6 +1,4 @@
-import Vue from 'vue';
-import FloatingDots from './floating-dots/FloatingDots';
-import App from "../options/App";
+import vueInit from "./vueInit";
 
 chrome.extension.sendMessage({}, function(settings) {
   var readyStateCheckInterval = setInterval(function() {
@@ -19,10 +17,7 @@ chrome.extension.sendMessage({}, function(settings) {
 
       document.body.append(div)
 
-      new Vue({
-        el: `#${id}`,
-        render: h => h(FloatingDots)
-      })
+      vueInit(id);
     }
   }, 10);
 });
