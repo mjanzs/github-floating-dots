@@ -17,7 +17,9 @@
       "background.js"
     ]
   },
-  "options_page": "options/options.html",
+  "options_ui": {
+    "page": "options/options.html"
+  },
   "content_scripts": [
     {
       "matches": [
