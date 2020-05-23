@@ -78,6 +78,10 @@ const config = {
     }),
     new CopyPlugin([
       { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
+      { from: 'css/materialize.css', to: 'options/materialize.css' },
+      { from: 'css/materialize.css', to: 'inject/materialize.css' },
+      { from: 'js/materialize.js', to: 'options/materialize.js' },
+      { from: 'js/materialize.js', to: 'inject/materialize.js' },
       { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
       { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
       { from: 'inject/inject.js', to: 'inject/inject.js' },

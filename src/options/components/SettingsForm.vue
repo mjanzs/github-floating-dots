@@ -1,20 +1,21 @@
 <template>
-  <f7-list form inline-labels no-hairlines-md>
-    <f7-list-input
-        :value="accessToken"
-        @input="accessToken = $event.target.value"
-        label="Github Access token"
-        type="text"
-        placeholder="Access token"
-        clear-button>
-      <f7-icon icon="demo-list-icon" slot="media"></f7-icon>
-      <span slot="info">
-        <a href="https://github.com/settings/tokens/new?scopes=repo&description=octolenses">
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input
+              v-model="accessToken"
+              id="access_token"
+              type="text"
+              placeholder="Access token">
+          <label for="access_token">Github Access Token</label>
+        </div>
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=floating-dots">
           Github Access Tokens
         </a>
-      </span>
-    </f7-list-input>
-  </f7-list>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
