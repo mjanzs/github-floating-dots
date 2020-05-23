@@ -13,6 +13,8 @@ const config = {
     'background': './background.js',
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
+    'inject/inject': './inject/inject.js',
+    'store/store': './store/store.js',
   },
   output: {
     path: __dirname + '/dist',
@@ -78,6 +80,7 @@ const config = {
       { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
       { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
       { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
+      { from: 'inject/inject.js', to: 'inject/inject.js' },
       {
         from: 'manifest.json',
         to: 'manifest.json',

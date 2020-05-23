@@ -13,8 +13,19 @@
   },
   "background": {
     "scripts": [
+      "store/store.js",
       "background.js"
     ]
   },
-  "options_page": "options/options.html"
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://github.com/*"
+      ],
+      "js": [
+        "inject/inject.js"
+      ]
+    }
+  ]
 }
