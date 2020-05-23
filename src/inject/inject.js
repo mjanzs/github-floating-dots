@@ -1,3 +1,7 @@
+import Vue from 'vue';
+import FloatingDots from './floating-dots/FloatingDots';
+import App from "../options/App";
+
 chrome.extension.sendMessage({}, function(settings) {
   var readyStateCheckInterval = setInterval(function() {
     if (document.readyState === "complete") {
@@ -8,7 +12,17 @@ chrome.extension.sendMessage({}, function(settings) {
       console.log("Connection to Github ...");
       // ----------------------------------------------------------
 
-      alert(settings.accessToken)
+      const id = 'github-floating-dots';
+
+      const div = document.createElement('div');
+      div.id = id
+
+      document.body.append(div)
+
+      new Vue({
+        el: `#${id}`,
+        render: h => h(FloatingDots)
+      })
     }
   }, 10);
 });
