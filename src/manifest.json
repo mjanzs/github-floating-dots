@@ -27,6 +27,9 @@
       ],
       "js": [
         "inject/inject.js"
+      ],
+      "css": [
+        "inject/inject.css"
       ]
     }
   ]
