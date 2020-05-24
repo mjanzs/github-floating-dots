@@ -24,7 +24,7 @@ export default {
 
   .github-floating-dots {
     position: fixed;
-    top: 23px;
+    bottom: 23px;
     right: 0;
     padding-top: 15px;
     margin-bottom: 0px;

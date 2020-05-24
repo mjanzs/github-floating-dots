@@ -26,6 +26,7 @@
         hoverEnabled: false,
         isOpen: this.opacity, // todo cookie
       });
+      this.button.open()
     }
   }
 </script>
