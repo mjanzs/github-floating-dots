@@ -1,4 +1,5 @@
 import vueInit from "./vueInit";
+import materializeCssInit from "./materializeCssInit";
 
 chrome.extension.sendMessage({}, function(settings) {
   var readyStateCheckInterval = setInterval(function() {
@@ -17,6 +18,7 @@ chrome.extension.sendMessage({}, function(settings) {
 
       document.body.append(div)
 
+      materializeCssInit();
       vueInit(id);
     }
   }, 10);

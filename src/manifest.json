@@ -29,8 +29,12 @@
         "inject/inject.js"
       ],
       "css": [
-        "inject/inject.css"
+        "inject/inject.css",
+        "inject/icon.css"
       ]
     }
+  ],
+  "web_accessible_resources": [
+    "inject/*"
   ]
 }
