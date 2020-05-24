@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="github-floating-dots">
     <review-actions></review-actions>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  .github-floating-dots {
+    @import 'materialize-css/sass/materialize.scss';
+  }
 </style>
+

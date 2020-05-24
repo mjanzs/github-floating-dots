@@ -1,5 +1,5 @@
 <template>
-  <div class="github-floating-dots">
+  <div>
     <div class="fixed-action-btn" ref="btn">
       <slot></slot>
     </div>
@@ -18,8 +18,3 @@
   }
 </script>
 
-<style lang="scss">
-  .github-floating-dots {
-    @import 'materialize-css/sass/materialize.scss';
-  }
-</style>

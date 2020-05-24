@@ -77,14 +77,18 @@ const config = {
       filename: '[name].css',
     }),
     new CopyPlugin([
-      { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
-      { from: 'css', to: 'options' },
+      // inject
       { from: 'css', to: 'inject' },
-      { from: 'js', to: 'options' },
       { from: 'js', to: 'inject' },
-      { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
-      { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
       { from: 'inject/inject.js', to: 'inject/inject.js' },
+      // options
+      { from: 'css', to: 'options' },
+      { from: 'js', to: 'options' },
+      { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
+      // popup
+      { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
+      // icons
+      { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
       {
         from: 'manifest.json',
         to: 'manifest.json',
