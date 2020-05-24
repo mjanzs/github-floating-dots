@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="fixed-action-btn" ref="btn">
+    <div @onlick="onclick"
+        class="fixed-action-btn" ref="btn">
       <slot></slot>
     </div>
   </div>
@@ -9,12 +10,35 @@
 <script>
   import M from 'materialize-css/dist/js/materialize'
   export default {
+    data() {
+      return {
+        open: true
+      }
+    },
+    methods: {
+      onclick() {
+        this.open = !this.open;
+      }
+    },
     mounted() {
-      M.FloatingActionButton.init(this.$refs.btn, {
+      this.button = M.FloatingActionButton.init(this.$refs.btn, {
         direction: 'left',
-        isOpen: true, // todo cookie
+        hoverEnabled: false,
+        isOpen: this.opacity, // todo cookie
       });
     }
   }
 </script>
 
+<style lang="scss">
+  .fixed-action-btn {
+    position: relative !important;
+    padding: 0 0 10px 0 !important;
+    ul {
+      right: 45px !important;
+      li {
+        margin: 7.5px 7.5px 0 0 !important;
+      }
+    }
+  }
+</style>
