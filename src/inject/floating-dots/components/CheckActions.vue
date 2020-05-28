@@ -16,6 +16,13 @@
 
 <script>
   import FloatingActionButton from './FloatingActionButton';
+  import octokit from "../octokit";
+
+  const response = octokit.pulls.get({
+    owner: 'wandera',
+    repo: 'app-info-service',
+    pull_number: 1
+  });
 
   export default {
     components: {
