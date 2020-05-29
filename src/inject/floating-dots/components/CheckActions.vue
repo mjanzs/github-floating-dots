@@ -1,14 +1,17 @@
 <template>
   <div>
-    <floating-action-button>
+    <floating-action-button ref="fab">
       <a class="btn-floating red">
         <i class="large material-icons">mode_edit</i>
       </a>
       <ul>
-        <li><a class="btn-floating btn-small red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating btn-small yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating btn-small green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating btn-small blue"><i class="material-icons">attach_file</i></a></li>
+        <li v-for="status in statuses">
+          <a :href="status.url" class="btn-floating btn-small red">
+            <i class="material-icons">
+              insert_chart
+            </i>
+          </a>
+        </li>
       </ul>
     </floating-action-button>
   </div>
@@ -22,12 +25,26 @@
   const ghClient = new GhClient();
 
   export default {
-    async mounted() {
-      const pullRequest = this.$root.$data.pullRequest;
-      const statusesResponse = await ghClient.getChecks(pullRequest.octokitRequest);
-      const statuses = Statuses.statusesFromGhResponse(statusesResponse).currentStatus();
-      console.log(JSON.stringify(statuses));
-      debugger;
+    data() {
+      return {
+        statuses: []
+      }
+    },
+    asyncComputed: {
+      async statuses() {
+        const pullRequest = this.$root.$data.pullRequest;
+        const statusesResponse = await ghClient.getChecks(pullRequest.octokitRequest);
+        return Statuses.statusesFromGhResponse(statusesResponse).currentStatus();
+      }
+    },
+    watch: {
+      statuses(val) {
+        if (val) {
+          this.$nextTick(() => {
+            this.$refs.fab.attach();
+          });
+        }
+      }
     },
     components: {
       FloatingActionButton

@@ -17,16 +17,11 @@ export default class Statuses {
   }
 
   currentStatus() {
-    const currentStatus = Object.keys(this.statuses)
+    return Object.keys(this.statuses)
       .map((key) => this.statuses[key])
       .map(value => value
       .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
           .shift());
-
-    return currentStatus.reduce((statuses, value) => {
-      statuses[value.name] = value;
-      return statuses;
-    }, {});
   }
 
 }

@@ -18,15 +18,15 @@
     methods: {
       onclick() {
         this.open = !this.open;
+      },
+      attach() {
+        this.button = M.FloatingActionButton.init(this.$refs.btn, {
+          direction: 'left',
+          hoverEnabled: false,
+          isOpen: this.open, // todo cookie
+        });
+        this.button.open()
       }
-    },
-    mounted() {
-      this.button = M.FloatingActionButton.init(this.$refs.btn, {
-        direction: 'left',
-        hoverEnabled: false,
-        isOpen: this.opacity, // todo cookie
-      });
-      this.button.open()
     }
   }
 </script>
