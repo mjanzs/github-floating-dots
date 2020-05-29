@@ -16,7 +16,7 @@
 
 <script>
   import FloatingActionButton from './FloatingActionButton';
-  import octokit from "../objects/octokit";
+  import octokit from "../../objects/octokit";
 
   const response = octokit.pulls.get({
     owner: 'wandera',

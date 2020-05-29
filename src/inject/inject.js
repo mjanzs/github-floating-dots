@@ -1,5 +1,6 @@
-import vueInit from "./vueInit";
-import materializeCssInit from "./materializeCssInit";
+import vueInit from "./functions/vueInit";
+import materializeCssInit from "./functions/materializeCssInit";
+import attachElement from "./functions/attachElement";
 import Store from "../store/store";
 
 const store = new Store('settings', {
@@ -18,14 +19,8 @@ chrome.extension.sendMessage({}, function(settings) {
 
       store.set('accessToken', settings.accessToken);
 
-      const id = 'github-floating-dots';
-
-      const div = document.createElement('div');
-      div.id = id
-
-      document.body.append(div)
-
       materializeCssInit();
+      attachElement('github-floating-dots');
       vueInit(id);
     }
   }, 10);
