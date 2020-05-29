@@ -9,4 +9,8 @@ export default class GhClient {
     const pull = await this.getPulls(pullRequest);
     return octokit.request(pull.data.statuses_url);
   }
+
+  async getReview(pullRequest) {
+    return octokit.pulls.listReviews(pullRequest);
+  }
 }

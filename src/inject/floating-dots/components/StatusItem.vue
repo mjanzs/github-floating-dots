@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { states, icons } from '../styles';
+  import { statusColors, statusIcons } from '../styles';
 
   export default {
     props: [
@@ -18,13 +18,13 @@
     computed: {
       style() {
         return {
-          'background-color': states[this.status.state]
+          'background-color': statusColors[this.status.state]
         }
       }
     },
     methods: {
       icon(val) {
-        return icons[val];
+        return statusIcons[val];
       }
     }
   }

@@ -1,14 +1,19 @@
 <template>
   <div>
-    <floating-action-button>
-      <a class="btn-floating red">
-        <i class="large material-icons">mode_edit</i>
+    <floating-action-button ref="fab">
+      <a class="btn-floating">
+        <i class="large material-icons">
+          rate_review
+        </i>
       </a>
       <ul>
-        <li><a class="btn-floating btn-small red"><i class="material-icons">insert_chart</i></a></li>
-        <li><a class="btn-floating btn-small yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-        <li><a class="btn-floating btn-small green"><i class="material-icons">publish</i></a></li>
-        <li><a class="btn-floating btn-small blue"><i class="material-icons">attach_file</i></a></li>
+        <li>
+          <a title="Approve" class="btn-floating btn-small" :style="reviewStateStyle">
+            <i class="material-icons">
+              {{ reviewStateIcon }}
+            </i>
+          </a>
+        </li>
       </ul>
     </floating-action-button>
   </div>
@@ -16,8 +21,45 @@
 
 <script>
   import FloatingActionButton from './FloatingActionButton'
+  import GhClient from "../../classes/GhClient";
+  import Reviews from "../../classes/gh/Reviews";
+  import { reviewStatesColors, reviewStateIcons } from '../styles';
+
+  const ghClient = new GhClient();
 
   export default {
+    data() {
+      return {
+        review: null
+      }
+    },
+    asyncComputed: {
+      async review() {
+        const pullRequest = this.$root.$data.pullRequest;
+        const reviewsResponse = await ghClient.getReview(pullRequest.octokitRequest);
+        return Reviews.reviewsFromGhResponse(reviewsResponse).currentReview();
+      }
+    },
+    computed: {
+      state() {
+        return this.review ? this.review.state : 'PENDING';
+      },
+      reviewStateStyle() {
+        return {
+          'background-color': reviewStatesColors[this.state]
+        }
+      },
+      reviewStateIcon() {
+        return reviewStateIcons[this.state];
+      }
+    },
+    methods: {
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this.$refs.fab.attach();
+      });
+    },
     components: {
       FloatingActionButton
     }

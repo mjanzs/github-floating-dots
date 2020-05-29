@@ -23,4 +23,8 @@ export default class Status {
   get context() {
     return this.rawStatus.context;
   }
+
+  get createdAt() {
+    return this.rawStatus.created_at;
+  }
 }

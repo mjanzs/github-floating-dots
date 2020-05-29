@@ -20,7 +20,7 @@ export default class Statuses {
     return Object.keys(this.statuses)
       .map((key) => this.statuses[key])
       .map(value => value
-      .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .shift());
   }
 

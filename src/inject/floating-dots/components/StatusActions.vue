@@ -8,7 +8,6 @@
       </a>
       <ul>
         <status-item v-for="status in statuses" :key="status.name" :status="status">
-
         </status-item>
       </ul>
     </floating-action-button>
