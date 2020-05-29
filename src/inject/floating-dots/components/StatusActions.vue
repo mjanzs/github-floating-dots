@@ -2,7 +2,9 @@
   <div>
     <floating-action-button ref="fab">
       <a class="btn-floating red">
-        <i class="large material-icons">mode_edit</i>
+        <i class="large material-icons">
+          fact_check
+        </i>
       </a>
       <ul>
         <status-item v-for="status in statuses" :key="status.name" :status="status">
