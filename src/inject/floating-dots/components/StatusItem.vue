@@ -1,6 +1,6 @@
 <template>
   <li>
-    <a :href="status.url" :title="status.context" :style="style" class="btn-floating btn-small">
+    <a @click.prevent.stop="window.location = status.url" :href="status.url" :title="status.context" :style="style" class="btn-floating btn-small">
       <i class="material-icons">
         {{ icon(status.name) }}
       </i>

@@ -8,6 +8,20 @@
       </a>
       <ul>
         <li>
+          <a title="Request changes" class="btn-floating btn-small red darken-4">
+            <i class="material-icons">
+              cancel
+            </i>
+          </a>
+        </li>
+        <li>
+          <a title="Approve" class="btn-floating btn-small green darken-4">
+            <i class="material-icons">
+              check_circle
+            </i>
+          </a>
+        </li>
+        <li>
           <a :title="state" class="btn-floating btn-small" :style="reviewStateStyle">
             <i class="material-icons">
               {{ reviewStateIcon }}
