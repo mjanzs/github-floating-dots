@@ -8,7 +8,7 @@
       </a>
       <ul>
         <li>
-          <a title="Approve" class="btn-floating btn-small" :style="reviewStateStyle">
+          <a :title="state" class="btn-floating btn-small" :style="reviewStateStyle">
             <i class="material-icons">
               {{ reviewStateIcon }}
             </i>
