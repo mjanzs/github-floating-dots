@@ -1,7 +1,7 @@
 <template>
   <div>
     <floating-action-button ref="fab">
-      <a class="btn-floating red">
+      <a class="btn-floating purple darken-4">
         <i class="large material-icons">
           fact_check
         </i>
