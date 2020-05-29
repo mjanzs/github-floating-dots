@@ -2,6 +2,7 @@ import vueInit from "./functions/vueInit";
 import materializeCssInit from "./functions/materializeCssInit";
 import attachElement from "./functions/attachElement";
 import Store from "../store/store";
+import PullRequest from "./classes/gh/PullRequest";
 
 const store = new Store('settings', {
   'accessToken': ''
@@ -17,11 +18,15 @@ chrome.extension.sendMessage({}, function(settings) {
       console.log("Connection to Github ...");
       // ----------------------------------------------------------
 
-      store.set('accessToken', settings.accessToken);
+      const pullRequest = PullRequest.fromGhUri(window.location.href);
 
-      materializeCssInit();
-      attachElement('github-floating-dots');
-      vueInit(id);
+      if (pullRequest) {
+        store.set('accessToken', settings.accessToken);
+
+        materializeCssInit();
+        attachElement('github-floating-dots');
+        vueInit('github-floating-dots', pullRequest);
+      }
     }
   }, 10);
 });

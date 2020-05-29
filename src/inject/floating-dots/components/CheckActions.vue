@@ -16,15 +16,19 @@
 
 <script>
   import FloatingActionButton from './FloatingActionButton';
-  import octokit from "../../objects/octokit";
+  import GhClient from "../../classes/GhClient";
+  import Statuses from "../../classes/gh/Statuses";
 
-  const response = octokit.pulls.get({
-    owner: 'wandera',
-    repo: 'app-info-service',
-    pull_number: 1
-  });
+  const ghClient = new GhClient();
 
   export default {
+    async mounted() {
+      const pullRequest = this.$root.$data.pullRequest;
+      const statusesResponse = await ghClient.getChecks(pullRequest.octokitRequest);
+      const statuses = Statuses.statusesFromGhResponse(statusesResponse).currentStatus();
+      console.log(JSON.stringify(statuses));
+      debugger;
+    },
     components: {
       FloatingActionButton
     }
