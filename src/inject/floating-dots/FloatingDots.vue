@@ -1,18 +1,18 @@
 <template>
   <div class="github-floating-dots">
     <review-actions></review-actions>
-    <check-actions></check-actions>
+    <status-actions></status-actions>
   </div>
 </template>
 
 <script>
 import ReviewActions from "./components/ReviewActions";
-import CheckActions from "./components/CheckActions";
+import StatusActions from "./components/StatusActions";
 
 export default {
   components: {
     ReviewActions,
-    CheckActions
+    StatusActions
   }
 }
 </script>

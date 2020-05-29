@@ -5,13 +5,9 @@
         <i class="large material-icons">mode_edit</i>
       </a>
       <ul>
-        <li v-for="status in statuses">
-          <a :href="status.url" class="btn-floating btn-small red">
-            <i class="material-icons">
-              insert_chart
-            </i>
-          </a>
-        </li>
+        <status-item v-for="status in statuses" :key="status.name" :status="status">
+
+        </status-item>
       </ul>
     </floating-action-button>
   </div>
@@ -19,6 +15,7 @@
 
 <script>
   import FloatingActionButton from './FloatingActionButton';
+  import StatusItem from "./StatusItem";
   import GhClient from "../../classes/GhClient";
   import Statuses from "../../classes/gh/Statuses";
 
@@ -47,7 +44,8 @@
       }
     },
     components: {
-      FloatingActionButton
+      FloatingActionButton,
+      StatusItem
     }
   }
 </script>
