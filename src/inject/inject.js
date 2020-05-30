@@ -8,6 +8,7 @@ const store = new Store('settings', {
   'accessToken': ''
 });
 
+
 chrome.extension.sendMessage({}, function(settings) {
   var readyStateCheckInterval = setInterval(function() {
     if (document.readyState === "complete") {
