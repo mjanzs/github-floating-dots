@@ -1,5 +1,6 @@
 <template>
   <div class="github-floating-dots">
+    <changed-files-actions></changed-files-actions>
     <review-actions></review-actions>
     <status-actions></status-actions>
   </div>
@@ -8,11 +9,18 @@
 <script>
 import ReviewActions from "./components/ReviewActions";
 import StatusActions from "./components/StatusActions";
+import ChangedFilesActions from "./components/ChangedFilesActions";
 
 export default {
+  data() {
+    return {
+      page: this.$root.$data.pullRequest.page
+    }
+  },
   components: {
     ReviewActions,
-    StatusActions
+    StatusActions,
+    ChangedFilesActions
   }
 }
 </script>

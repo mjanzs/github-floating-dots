@@ -1,8 +1,16 @@
+const colors = {
+  red: '#F44336',
+  darkRed: '#7d1008',
+  blue: '#1E92F4',
+  green: '#4BB543',
+  gray: '#777'
+}
+
 const statusColors = {
-  error: '#F44336',
-  failure: '#7d1008',
-  pending: '#1E92F4',
-  success: '#4BB543'
+  error: colors.red,
+  failure: colors.darkRed,
+  pending: colors.blue,
+  success: colors.green
 }
 
 // todo configurable
@@ -15,10 +23,10 @@ const statusIcons = {
 }
 
 const reviewStatesColors = {
-  'APPROVED': '#4BB543',
-  'CHANGES_REQUESTED': '#7d1008',
-  'COMMENTED': '#1E92F4',
-  'PENDING': '#777'
+  'APPROVED': colors.green,
+  'CHANGES_REQUESTED': colors.darkRed,
+  'COMMENTED': colors.blue,
+  'PENDING': colors.gray
 }
 
 const reviewStateIcons = {
@@ -29,6 +37,7 @@ const reviewStateIcons = {
 }
 
 export {
+  colors,
   statusColors,
   statusIcons,
   reviewStatesColors,
