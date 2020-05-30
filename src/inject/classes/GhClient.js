@@ -13,4 +13,24 @@ export default class GhClient {
   async getReview(pullRequest) {
     return octokit.pulls.listReviews(pullRequest);
   }
+
+  async approve(pullRequest) {
+    return this.submitReview(pullRequest, {
+      event: 'APPROVE'
+    });
+  }
+
+  async requestChanges(pullRequest) {
+    return this.submitReview(pullRequest, {
+      event: 'REQUEST_CHANGES',
+      body: 'Changes required'
+    });
+  }
+
+  async submitReview(pullRequest, params) {
+    return octokit.pulls.createReview({
+      ...pullRequest,
+      ...params
+    });
+  }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <floating-action-button ref="fab">
+    <floating-action-button ref="fab"> <!--v-if="statuses.length"-->
       <a class="btn-floating purple darken-4">
         <i class="large material-icons">
           fact_check

@@ -8,14 +8,14 @@
       </a>
       <ul>
         <li v-if="reviewState !== 'CHANGES_REQUESTED'">
-          <a title="Request changes" class="btn-floating btn-small red darken-4">
+          <a @click.prevent.stop="requestChanges" title="Request changes" class="btn-floating btn-small red darken-4">
             <i class="material-icons">
               cancel
             </i>
           </a>
         </li>
         <li v-if="reviewState !== 'APPROVED'">
-          <a title="Approve" class="btn-floating btn-small green darken-4">
+          <a @click.prevent.stop="approve"title="Approve" class="btn-floating btn-small green darken-4">
             <i class="material-icons">
               check_circle
             </i>
@@ -68,6 +68,14 @@
       }
     },
     methods: {
+      approve() {
+        const pullRequest = this.$root.$data.pullRequest;
+        ghClient.approve(pullRequest.octokitRequest);
+      },
+      requestChanges() {
+        const pullRequest = this.$root.$data.pullRequest;
+        ghClient.requestChanges(pullRequest.octokitRequest);
+      }
     },
     mounted() {
       this.$nextTick(() => {

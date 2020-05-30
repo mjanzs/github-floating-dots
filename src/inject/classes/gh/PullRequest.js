@@ -1,4 +1,4 @@
-const GH_URI_REGEX = new RegExp('https?://github\.com/(?<owner>[^/]+)/(?<repo>[^/]+)/pull/(?<pullNumber>\\d+)/?')
+const GH_URI_REGEX = new RegExp('https?://github\.com/(?<owner>[^/]+)/(?<repo>[^/]+)/pull/(?<pullNumber>\\d+)/?.*')
 
 export default class PullRequest {
 

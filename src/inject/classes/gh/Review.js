@@ -4,6 +4,14 @@ export default class Review {
     this.rawReview = rawReview;
   }
 
+  get id() {
+    return this.rawReview.id;
+  }
+
+  get commitId() {
+    return this.rawReview.commit_id;
+  }
+
   get state() {
     return this.rawReview.state;
   }
