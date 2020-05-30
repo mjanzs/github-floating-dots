@@ -7,22 +7,26 @@
         </i>
       </a>
       <ul>
-        <a @click.prevent.stop="markAllAsUnviewed"
-           :style="{'background-color': colors.gray}"
-           title="Mark as viewed"
-           class="btn-floating btn-small">
-          <i class="material-icons">
-            clear
-          </i>
-        </a>
-        <a @click.prevent.stop="markAllAsViewed"
-           :style="{'background-color': colors.blue}"
-           title="Mark as viewed"
-           class="btn-floating btn-small">
-          <i class="material-icons">
-            library_add_check
-          </i>
-        </a>
+        <li>
+          <a @click.prevent.stop="markAllAsUnviewed"
+             :style="{'background-color': colors.gray}"
+             title="Mark as viewed"
+             class="btn-floating btn-small">
+            <i class="material-icons">
+              clear
+            </i>
+          </a>
+        </li>
+        <li>
+          <a @click.prevent.stop="markAllAsViewed"
+             :style="{'background-color': colors.blue}"
+             title="Mark as unviewed"
+             class="btn-floating btn-small">
+            <i class="material-icons">
+              library_add_check
+            </i>
+          </a>
+        </li>
       </ul>
     </floating-action-button>
   </div>
