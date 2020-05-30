@@ -19,7 +19,7 @@
           </a>
         </li>
         <li>
-          <a @click.prevent.stop=""
+          <a @click.prevent.stop="resolveAll"
              :style="{'background-color': colors.gray}"
              title="Unresolved"
              class="btn-floating btn-small">
@@ -58,6 +58,19 @@
         get() {
           return document.querySelectorAll('.js-resolvable-timeline-thread-container[data-resolved="false"]').length
         }
+      }
+    },
+    methods: {
+      resolveAll() {
+        document
+            .querySelectorAll('.js-resolvable-timeline-thread-container[data-resolved="false"] ' +
+              '.js-resolvable-timeline-thread-form ' +
+              'button[type="submit"]')
+            .forEach(button => button.click());
+
+        this.$nextTick(() => {
+          this.$forceUpdate();
+        });
       }
     },
     mounted() {
