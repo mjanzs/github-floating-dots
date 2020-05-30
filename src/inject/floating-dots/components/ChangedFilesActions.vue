@@ -36,7 +36,7 @@
   import FloatingActionButton from './FloatingActionButton';
   import { colors } from '../styles'
   export default {
-      computed: {
+    computed: {
       colors() {
         return colors
       }

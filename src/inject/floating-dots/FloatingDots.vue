@@ -2,6 +2,7 @@
   <div class="github-floating-dots">
     <changed-files-actions></changed-files-actions>
     <review-actions></review-actions>
+    <threads-actions></threads-actions>
     <status-actions></status-actions>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import ReviewActions from "./components/ReviewActions";
 import StatusActions from "./components/StatusActions";
 import ChangedFilesActions from "./components/ChangedFilesActions";
+import ThreadsActions from "./components/ThreadsActions";
 
 export default {
   data() {
@@ -20,7 +22,8 @@ export default {
   components: {
     ReviewActions,
     StatusActions,
-    ChangedFilesActions
+    ChangedFilesActions,
+    ThreadsActions
   }
 }
 </script>
