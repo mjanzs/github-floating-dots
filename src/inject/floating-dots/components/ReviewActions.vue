@@ -1,20 +1,20 @@
 <template>
   <div>
     <floating-action-button ref="fab">
-      <a class="btn-floating">
+      <a class="btn-floating purple darken-4">
         <i class="large material-icons">
           rate_review
         </i>
       </a>
       <ul>
-        <li>
+        <li v-if="reviewState !== 'CHANGES_REQUESTED'">
           <a title="Request changes" class="btn-floating btn-small red darken-4">
             <i class="material-icons">
               cancel
             </i>
           </a>
         </li>
-        <li>
+        <li v-if="reviewState !== 'APPROVED'">
           <a title="Approve" class="btn-floating btn-small green darken-4">
             <i class="material-icons">
               check_circle
@@ -22,7 +22,7 @@
           </a>
         </li>
         <li>
-          <a :title="state" class="btn-floating btn-small" :style="reviewStateStyle">
+          <a :title="reviewState" class="btn-floating btn-small" :style="reviewStateStyle">
             <i class="material-icons">
               {{ reviewStateIcon }}
             </i>
@@ -55,16 +55,16 @@
       }
     },
     computed: {
-      state() {
+      reviewState() {
         return this.review ? this.review.state : 'PENDING';
       },
       reviewStateStyle() {
         return {
-          'background-color': reviewStatesColors[this.state]
+          'background-color': reviewStatesColors[this.reviewState]
         }
       },
       reviewStateIcon() {
-        return reviewStateIcons[this.state];
+        return reviewStateIcons[this.reviewState];
       }
     },
     methods: {

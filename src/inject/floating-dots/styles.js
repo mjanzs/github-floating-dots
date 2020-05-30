@@ -15,7 +15,7 @@ const statusIcons = {
 }
 
 const reviewStatesColors = {
-  'APPROVE': '#4e5c4d',
+  'APPROVED': '#4BB543',
   'CHANGES_REQUESTED': '#7d1008',
   'COMMENTED': '#1E92F4',
   'PENDING': '#777'
