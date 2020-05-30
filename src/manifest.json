@@ -6,7 +6,7 @@
   "icons": {
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png",
-    "256": "icons/icon_128.256"
+    "256": "icons/icon_256.png"
   },
   "browser_action": {
     "default_title": "github-floating-dots"
