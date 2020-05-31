@@ -7,7 +7,9 @@ import PullRequest from "./classes/gh/PullRequest";
 import reverseElements from './functions/reverseElements'
 
 const store = new Store('settings', {
-  'accessToken': ''
+  'accessToken': '',
+  'reverseTimeline': false,
+  'pullMergeOnTop': false
 });
 
 function ready(callbackFunc) {
@@ -29,8 +31,12 @@ function ready(callbackFunc) {
 
 function reverseTimeline() {
   ready(() => {
-    reverseElements(document.querySelector('.js-pull-discussion-timeline'))
-    reverseElements(document.querySelector('.js-pull-discussion-timeline .js-discussion'))
+    if (store.get('reverseTimeline')) {
+      reverseElements(document.querySelector('.js-pull-discussion-timeline .js-discussion'))
+    }
+    if (store.get('pullMergeOnTop')) {
+      reverseElements(document.querySelector('.js-pull-discussion-timeline'))
+    }
   });
 }
 
@@ -48,6 +54,8 @@ chrome.extension.sendMessage({}, function(settings) {
 
       if (pullRequest) {
         store.set('accessToken', settings.accessToken);
+        store.set('reverseTimeline', settings.reverseTimeline);
+        store.set('pullMergeOnTop', settings.pullMergeOnTop);
 
         reverseTimeline();
         materializeCssInit();
