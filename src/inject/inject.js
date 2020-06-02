@@ -1,6 +1,7 @@
 import vueInit from "./functions/vueInit";
 import materializeCssInit from "./functions/materializeCssInit";
 import attachElement from "./functions/attachElement";
+import checkFixup from "./functions/checkFixup";
 import Store from "../store/store";
 import PullRequest from "./classes/gh/PullRequest";
 
@@ -59,6 +60,7 @@ chrome.extension.sendMessage({}, function(settings) {
 
         reverseTimeline();
         materializeCssInit();
+        checkFixup(pullRequest);
         attachElement('github-floating-dots');
         vueInit('github-floating-dots', pullRequest);
       }

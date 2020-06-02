@@ -31,7 +31,7 @@
     asyncComputed: {
       async statuses() {
         const pullRequest = this.$root.$data.pullRequest;
-        const statusesResponse = await ghClient.getChecks(pullRequest.octokitRequest);
+        const statusesResponse = await ghClient.getChecks(pullRequest);
         return Statuses.statusesFromGhResponse(statusesResponse).currentStatus();
       }
     },

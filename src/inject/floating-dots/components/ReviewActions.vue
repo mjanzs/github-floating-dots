@@ -50,7 +50,7 @@
     asyncComputed: {
       async review() {
         const pullRequest = this.$root.$data.pullRequest;
-        const reviewsResponse = await ghClient.getReview(pullRequest.octokitRequest);
+        const reviewsResponse = await ghClient.getReview(pullRequest);
         return Reviews.reviewsFromGhResponse(reviewsResponse).currentReview();
       }
     },
@@ -70,11 +70,11 @@
     methods: {
       approve() {
         const pullRequest = this.$root.$data.pullRequest;
-        ghClient.approve(pullRequest.octokitRequest);
+        ghClient.approve(pullRequest);
       },
       requestChanges() {
         const pullRequest = this.$root.$data.pullRequest;
-        ghClient.requestChanges(pullRequest.octokitRequest);
+        ghClient.requestChanges(pullRequest);
       }
     },
     mounted() {

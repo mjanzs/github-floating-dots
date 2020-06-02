@@ -2,16 +2,16 @@ import octokit from "../objects/octokit";
 
 export default class GhClient {
   async getPulls(pullRequest) {
-    return octokit.pulls.get(pullRequest);
+    return octokit.pulls.get(pullRequest.octokitRequest);
   }
 
   async getChecks(pullRequest) {
-    const pull = await this.getPulls(pullRequest);
+    const pull = await this.getPulls(pullRequest.octokitRequest);
     return octokit.request(pull.data.statuses_url);
   }
 
   async getReview(pullRequest) {
-    return octokit.pulls.listReviews(pullRequest);
+    return octokit.pulls.listReviews(pullRequest.octokitRequest);
   }
 
   async approve(pullRequest) {
@@ -29,8 +29,12 @@ export default class GhClient {
 
   async submitReview(pullRequest, params) {
     return octokit.pulls.createReview({
-      ...pullRequest,
+      ...pullRequest.octokitRequest,
       ...params
     });
+  }
+
+  async getCommits(pullRequest) {
+    return octokit.pulls.listCommits(pullRequest.octokitRequest);
   }
 }
