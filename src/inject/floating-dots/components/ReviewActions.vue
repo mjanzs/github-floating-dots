@@ -7,14 +7,14 @@
         </i>
       </a>
       <ul>
-        <li v-if="reviewState !== 'CHANGES_REQUESTED'">
+        <li>
           <a @click.prevent.stop="requestChanges" title="Request changes" class="btn-floating btn-small red darken-4">
             <i class="material-icons">
               cancel
             </i>
           </a>
         </li>
-        <li v-if="reviewState !== 'APPROVED'">
+        <li>
           <a @click.prevent.stop="approve"title="Approve" class="btn-floating btn-small green darken-4">
             <i class="material-icons">
               check_circle
