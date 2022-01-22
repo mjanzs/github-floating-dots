@@ -2,8 +2,6 @@
   <div class="github-floating-dots">
     <changed-files-actions></changed-files-actions>
     <review-actions></review-actions>
-    <threads-actions></threads-actions>
-    <status-actions></status-actions>
   </div>
 </template>
 

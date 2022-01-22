@@ -58,9 +58,9 @@ chrome.extension.sendMessage({}, function(settings) {
         store.set('reverseTimeline', settings.reverseTimeline);
         store.set('pullMergeOnTop', settings.pullMergeOnTop);
 
-        reverseTimeline();
+        // reverseTimeline();
         materializeCssInit();
-        checkFixup(pullRequest);
+        // checkFixup(pullRequest);
         attachElement('github-floating-dots');
         vueInit('github-floating-dots', pullRequest);
       }
