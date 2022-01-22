@@ -76,34 +76,36 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
-    new CopyPlugin([
-      // inject
-      { from: 'css', to: 'inject' },
-      { from: 'js', to: 'inject' },
-      { from: 'inject/inject.js', to: 'inject/inject.js' },
-      // options
-      { from: 'css', to: 'options' },
-      { from: 'js', to: 'options' },
-      { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
-      // popup
-      { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
-      // icons
-      { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
-      {
-        from: 'manifest.json',
-        to: 'manifest.json',
-        transform: (content) => {
-          const jsonContent = JSON.parse(content);
-          jsonContent.version = version;
+    new CopyPlugin({
+      patterns: [
+        // inject
+        { from: 'css', to: 'inject' },
+        { from: 'js', to: 'inject' },
+        { from: 'inject/inject.js', to: 'inject/inject.js' },
+        // options
+        { from: 'css', to: 'options' },
+        { from: 'js', to: 'options' },
+        { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
+        // popup
+        { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
+        // icons
+        { from: 'icons', to: 'icons' },
+        {
+          from: 'manifest.json',
+          to: 'manifest.json',
+          transform: (content) => {
+            const jsonContent = JSON.parse(content);
+            jsonContent.version = version;
 
-          if (config.mode === 'development') {
-            jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval'; object-src 'self'";
-          }
+            if (config.mode === 'development') {
+              jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval'; object-src 'self'";
+            }
 
-          return JSON.stringify(jsonContent, null, 2);
+            return JSON.stringify(jsonContent, null, 2);
+          },
         },
-      },
-    ]),
+      ]
+    }),
   ],
 };
 
